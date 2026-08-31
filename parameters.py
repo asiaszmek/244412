@@ -3,12 +3,12 @@ spine_records = [
     {'variable':'cai','location':0.5,'unit':'mM'}
     ,{'variable':'gluti','location':0.5,'unit':'mM'}
     ,{'variable':'v','location':0.5,'unit':'mV'}
-    ,{'variable':'ica','location':0.5,'unit':'mM'}
+    ,{'variable':'ica','location':0.5,'unit':'mA/cm2'}
     ,{'variable':'iampa','point_process':'AMPA','location':0.5,'unit':'nA'}
     ,{'variable':'U_SE_factor','point_process':'AMPA','location':0.5,'unit':''}
     ,{'variable':'U_SE','point_process':'AMPA','location':0.5,'unit':''}
     ,{'variable':'inmda','point_process':'NMDA','location':0.5,'unit':'nA'}
-    ,{'variable':'ica','point_process':'NMDA','location':0.5,'unit':'nA'}
+    ,{'variable':'ica_nmdar','point_process':'NMDA','location':0.5,'unit':'nA'}
     ,{'variable':'mgb','point_process':'NMDA','location':0.5,'unit':'nA'}
     ,{'variable':'iglut','location':0.5,'unit':'mM'}
     #,{'variable':'RM','point_process':'RMECB','location':0.5,'unit':'mM'}
@@ -102,7 +102,7 @@ PPR = True
 time_on_initialization = 1e3 # ms 600e3 = 10 min
 time_to_begin_induction = 20e3 # ms
 nstim = 70
-induction_freq = 0.5 # Hz
+induction_freq = 100 # Hz
 BPAP_stimulus_amplitude = 5 # nA
 BPAP_stimulus_amplitude_branch = 0.08 # nA
 BPAP_dep_stimulus_duration = 2.5 # ms
@@ -111,7 +111,7 @@ time_after_induction = 0 # ms
 test_freq = 0.05 # Hz = 1/(20sec)
 time_start_induction = time_on_initialization + time_to_begin_induction
 test_post_point_to_plot_interval = 2*60*1e3 # ms = 2 min see Fig1B of Edelmann2015
-time_of_expression = 1800e3 # ms = 30 min
+time_of_expression = 6e5 # ms = 10 min
 activate_LTP_protocol = True
 # time_delta =  [-30,-20, -10, -5]
 time_delta =  [ -5, -5, -5, -5]
@@ -132,7 +132,7 @@ if ca_tuning:
     test_freq = 0.05 # Hz = 1/(20sec)
     time_start_induction = time_on_initialization + time_to_begin_induction
     test_post_point_to_plot_interval = 2*60*1e3 # ms = 2 min see Fig1B of Edelmann2015
-    time_of_expression = 1800e3 # ms = 30 min
+    time_of_expression = 6e5 # ms = 10 min
     activate_LTP_protocol = True
     time_delta =  list(range(-15,16,5))#[-10, -5]#[-20, -15, -10, -5, 0, 5, 10, 15, 20] # ms [-10, -5, 10]#
     override_tstop = 5e3
@@ -557,7 +557,7 @@ protocols = {
         'BPAP_hyp_stimulus_duration':0, # ms        
         'activate_LTP_protocol':True,
         'n_BPAP':0,
-        'nstim':70,
+        'nstim':1,
         'repeat_protocol':1,
         'color':'#FF4500'}
     # ,'LTP11':{
